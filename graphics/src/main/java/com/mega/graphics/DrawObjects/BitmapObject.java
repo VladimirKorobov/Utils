@@ -43,7 +43,9 @@ public class BitmapObject extends DrawingObject  {
 
     @Override
     public void Draw(IRenderer renderer) {
-        renderer.DrawBitmapObject(this);
+        if(getVisible()) {
+            renderer.DrawBitmapObject(this);
+        }
     }
 
     @Override

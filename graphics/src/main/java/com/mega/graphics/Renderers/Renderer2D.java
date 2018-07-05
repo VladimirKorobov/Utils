@@ -3,7 +3,10 @@ package com.mega.graphics.Renderers;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import com.mega.graphics.DrawObjects.*;
+
+import java.util.List;
 
 /**
  * Created by Vladimir on 20.03.2016.
@@ -60,6 +63,20 @@ public class Renderer2D implements IRenderer {
     }
 
     @Override
+    public void DrawObjectSequence(ObjectSequence objectSequence) {
+        List<DrawingObject> model = objectSequence.getModel();
+        canvas.save();
+        for(DrawingObject obj:  model) {
+            obj.Draw(this);
+            RectF rect = obj.getRect();
+            if(rect != null) {
+                canvas.translate(rect.width(), 0);
+            }
+        }
+        canvas.restore();
+    }
+
+        @Override
     public void DrawOffsetObject(OffsetObject offsetObject) {
         if(offsetObject.getDrawingObject() != null) {
             canvas.save();

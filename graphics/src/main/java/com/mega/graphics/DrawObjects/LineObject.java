@@ -17,7 +17,9 @@ public class LineObject extends DrawingObject  {
     public void setColor(int color) {this.color = color;}
     @Override
     public void Draw(IRenderer renderer) {
-        renderer.DrawLineObject(this);
+        if(getVisible()) {
+            renderer.DrawLineObject(this);
+        }
     }
 
     @Override

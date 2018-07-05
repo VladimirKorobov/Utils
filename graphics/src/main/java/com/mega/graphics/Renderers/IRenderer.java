@@ -2,6 +2,8 @@ package com.mega.graphics.Renderers;
 
 import com.mega.graphics.DrawObjects.*;
 
+import java.util.List;
+
 /**
  * Created by Vladimir on 20.03.2016.
  */
@@ -11,6 +13,7 @@ public interface IRenderer {
     void FillRectObject(RectObject rectObject);
     void DrawLineObject(LineObject lineObject);
     void DrawBitmapObject(BitmapObject bitmapObject);
+    void DrawObjectSequence(ObjectSequence objectSequence);
     void DrawOffsetObject(OffsetObject offsetObject);
     void DrawRotateObject(RotateObject rotateObject);
     void DrawScaleObject(ScaleObject scaleObject);

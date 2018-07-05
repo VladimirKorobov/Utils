@@ -3,6 +3,7 @@ package com.mega.graphics.Renderers;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
 import android.opengl.GLUtils;
@@ -14,6 +15,7 @@ import javax.microedition.khronos.opengles.GL10;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.IntBuffer;
+import java.util.List;
 
 /**
  * Created by Vladimir on 22.03.2016.
@@ -382,6 +384,20 @@ public class RendererGL implements IRenderer, GLSurfaceView.Renderer {
         gl10.glDisableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
         gl10.glDisable(GL10.GL_TEXTURE_2D);
         gl10.glDisable(GL10.GL_BLEND);
+    }
+
+    @Override
+    public void DrawObjectSequence(ObjectSequence objectSequence) {
+        gl10.glPushMatrix();
+        List<DrawingObject> model = objectSequence.getModel();
+        for(DrawingObject obj:  model) {
+            obj.Draw(this);
+            RectF rect = obj.getRect();
+            if(rect != null) {
+                gl10.glTranslatef(rect.width(), 0, 0);
+            }
+        }
+        gl10.glPopMatrix();
     }
 
     static int textureFromBmp(GL10 gl, Bitmap bmp)

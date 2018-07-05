@@ -23,7 +23,9 @@ public class TransformObject extends DrawingObject {
     }
     @Override
     public void Draw(IRenderer renderer) {
-        renderer.DrawTransformObject(this);
+        if(getVisible()) {
+            renderer.DrawTransformObject(this);
+        }
     }
 
     @Override

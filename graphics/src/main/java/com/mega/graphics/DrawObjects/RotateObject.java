@@ -57,7 +57,9 @@ public class RotateObject extends DrawingObject {
     }
     @Override
     public void Draw(IRenderer renderer) {
-        renderer.DrawRotateObject(this);
+        if(getVisible()) {
+            renderer.DrawRotateObject(this);
+        }
     }
 
     @Override

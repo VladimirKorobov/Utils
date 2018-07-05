@@ -17,7 +17,9 @@ public class TextObject extends DrawingObject {
 
     @Override
     public void Draw(IRenderer renderer) {
-        renderer.DrawTextObject(this);
+        if(getVisible()) {
+            renderer.DrawTextObject(this);
+        }
     }
 
     @Override

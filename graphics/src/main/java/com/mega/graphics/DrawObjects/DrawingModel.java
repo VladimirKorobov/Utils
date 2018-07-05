@@ -19,6 +19,7 @@ public class DrawingModel extends DrawingObject {
     public void Remove(DrawingObject drawingObject) {
         model.remove(drawingObject);
     }
+    public void Clear() { model.clear();}
     public Boolean isEmpty() { return model.isEmpty(); }
     public void Create(float width, float height) {
 
@@ -26,9 +27,10 @@ public class DrawingModel extends DrawingObject {
 
     @Override
     public void Draw(IRenderer renderer) {
-        for(DrawingObject drawObject : model )
-        {
-            drawObject.Draw(renderer);
+        if(getVisible()) {
+            for (DrawingObject drawObject : model) {
+                drawObject.Draw(renderer);
+            }
         }
     }
     @Override

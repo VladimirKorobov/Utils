@@ -37,7 +37,9 @@ public class ScaleObject extends DrawingObject  {
 
     @Override
     public void Draw(IRenderer renderer) {
-        renderer.DrawScaleObject(this);
+        if(getVisible()) {
+            renderer.DrawScaleObject(this);
+        }
     }
 
     @Override

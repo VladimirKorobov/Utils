@@ -27,7 +27,9 @@ public class OffsetObject extends DrawingObject {
 
     @Override
     public void Draw(IRenderer renderer) {
-        renderer.DrawOffsetObject(this);
+        if(getVisible()) {
+            renderer.DrawOffsetObject(this);
+        }
     }
 
     @Override

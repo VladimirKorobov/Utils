@@ -26,10 +26,12 @@ public class RectObject extends DrawingObject {
 
     @Override
     public void Draw(IRenderer renderer) {
-        if((drawFlag | DrawingObject.FILL) != 0)
-            renderer.FillRectObject(this);
-        if((drawFlag | DrawingObject.DRAW) != 0)
-            renderer.DrawRectObject(this);
+        if(getVisible()) {
+            if ((drawFlag | DrawingObject.FILL) != 0)
+                renderer.FillRectObject(this);
+            if ((drawFlag | DrawingObject.DRAW) != 0)
+                renderer.DrawRectObject(this);
+        }
     }
 
     @Override
